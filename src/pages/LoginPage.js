@@ -46,9 +46,11 @@ const LoginPage = () => {
       navigate('/');
     } catch (err) {
       if (err.response) {
-        setError(err.response.data.message);
+        setError(
+          err.response.data.message || 'Unable to connect to the server.'
+        );
       } else {
-        setError('Login failed. Please try again.');
+        setError('An error occurred. Please try again.');
       }
     }
   };
