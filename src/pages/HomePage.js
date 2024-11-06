@@ -10,14 +10,14 @@ const HomePage = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [filteredBooks, setFilteredBooks] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/books');
       setBooks(response.data);
-      setFilteredBooks(response.data); 
+      setFilteredBooks(response.data);
     };
     fetchData();
   }, []);
@@ -33,12 +33,12 @@ const HomePage = () => {
         book.author.toLowerCase().includes(search.toLowerCase()) ||
         book.id.toString().includes(search)
     );
-    setFilteredBooks(results); 
+    setFilteredBooks(results);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      handleSearch(); 
+      handleSearch();
     }
   };
 
@@ -47,7 +47,7 @@ const HomePage = () => {
   };
 
   const goToNewBookPage = () => {
-    navigate('/book-new/'); 
+    navigate('/book-new/');
   };
 
   return (
@@ -64,21 +64,33 @@ const HomePage = () => {
             onChange={handleSearchChange}
             onKeyDown={handleKeyDown}
           />
-          <button className="bg-gray-600 text-white px-4 py-2 rounded" onClick={handleSearch}>
+          <button
+            className="bg-gray-600 text-white px-4 py-2 rounded"
+            onClick={handleSearch}
+          >
             Search
           </button>
           {isAuthenticated && (
-            <button className="bg-gray-600 text-white px-4 py-2 rounded" onClick={goToNewBookPage}>
+            <button
+              className="bg-gray-600 text-white px-4 py-2 rounded"
+              onClick={goToNewBookPage}
+            >
               New Book
             </button>
           )}
         </div>
 
-        <p className="text-gray-600 mb-4">{filteredBooks.length} results found</p>
+        <p className="text-gray-600 mb-4">
+          {filteredBooks.length} results found
+        </p>
 
         <div className="grid gap-4">
           {filteredBooks.map((book) => (
-            <div key={book.id} onClick={() => goToBookPage(book.id)} className="cursor-pointer">
+            <div
+              key={book.id}
+              onClick={() => goToBookPage(book.id)}
+              className="cursor-pointer"
+            >
               <div className="flex items-center gap-4">
                 <img
                   src={book.coverImage}
