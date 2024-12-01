@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
+import BookForm from '@/components/Form/BookForm';
 
 const BookPage = () => {
   const { id } = useParams();
@@ -28,14 +29,12 @@ const BookPage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  //handle submit needs to be implemented
+  const handleSubmit = async (e) => {};
+
   return (
     <MainLayout>
-      <div>
-        <h1>{book.title}</h1>
-        <p>Author: {book.author}</p>
-        <p>Description: {book.description}</p>
-        <img src={book.coverImage} alt={book.title} />
-      </div>
+      <BookForm book={book} setBook={setBook} handleSubmit={handleSubmit} />;
     </MainLayout>
   );
 };
