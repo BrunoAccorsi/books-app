@@ -34,7 +34,12 @@ const BookPage = () => {
 
   return (
     <MainLayout>
-      <BookForm book={book} setBook={setBook} handleSubmit={handleSubmit} />;
+      <div>
+        <h1>{book.title}</h1>
+        <p>Author: {book.author}</p>
+        <p>Description: {book.description}</p>
+        <img src={book.coverImage} alt={book.title} />
+      </div>
     </MainLayout>
   );
 };
