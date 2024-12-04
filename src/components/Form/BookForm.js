@@ -109,7 +109,7 @@ const BookForm = ({
             onClick={() => setDisabled(!disabled)}
             className="w-full mt-6"
           >
-            {disabled ? 'Editing' : 'Disable Editing'}
+            {disabled ? 'Enable Editing' : 'Disable Editing'}
           </Button>
         )}
         <Button className="w-full mt-6" disabled={disabled && isEditing}>

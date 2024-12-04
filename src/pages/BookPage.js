@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
 import '../styles/BookPage.css';
+import { AuthContext } from '@/Context/AuthContext';
+import { Button } from '@/components/ui/button';
 
 const BookPage = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const isAuthenticated = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -41,6 +45,14 @@ const BookPage = () => {
         <div className="additional-info">
           <p>Publication Date: {book.publicationDate}</p>
         </div>
+        {isAuthenticated && (
+          <Button
+            className="w-[290px]"
+            onClick={() => navigate(`/book-edit/${id}`)}
+          >
+            Edit Book
+          </Button>
+        )}
       </div>
     </MainLayout>
   );

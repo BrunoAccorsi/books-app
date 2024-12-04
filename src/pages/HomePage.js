@@ -43,10 +43,6 @@ const HomePage = () => {
   };
 
   const goToBookPage = (id) => {
-    if (isAuthenticated) {
-      navigate(`/book-edit/${id}`);
-      return;
-    }
     navigate(`/books/${id}`);
   };
 
