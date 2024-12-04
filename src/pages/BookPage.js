@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
-import BookForm from '@/components/Form/BookForm';
+//import BookForm from '@/components/Form/BookForm';
+import '../styles/BookPage.css'; // Patricia
 
 const BookPage = () => {
   const { id } = useParams();
@@ -30,15 +31,30 @@ const BookPage = () => {
   if (error) return <p>{error}</p>;
 
   //handle submit needs to be implemented
-  const handleSubmit = async (e) => {};
+  //const handleSubmit = async (e) => {};
 
   return (
-    <MainLayout>
-      <div>
+    // <MainLayout> comentado por Patricia para estilizar
+    //   <div>
+    //     <h1>{book.title}</h1>
+    //     <p>Author: {book.author}</p>
+    //     <p>Description: {book.description}</p>
+    //     <img src={book.coverImage} alt={book.title} />
+    //   </div>
+    // </MainLayout>
+
+    //Patricia - criadas classes para css BookPage.css
+    <MainLayout> 
+      <div className="book-page-container">
         <h1>{book.title}</h1>
-        <p>Author: {book.author}</p>
-        <p>Description: {book.description}</p>
+        <h2>Author: {book.author}</h2>
+        <div className="description">
+          <h2>Description: {book.description}</h2>
+        </div>
         <img src={book.coverImage} alt={book.title} />
+        <div className="additional-info">
+          <p>Publication Date: {book.publicationDate}</p>
+        </div>
       </div>
     </MainLayout>
   );

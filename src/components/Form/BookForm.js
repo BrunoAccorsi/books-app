@@ -3,7 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
+// const BookForm = ({ book, setBook, handleSubmit, isEditing }) => { comentado por Patricia
+const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisabled }) => { // Patricia
   const handleChange = (e) => {
     const { name, value } = e.target;
     setBook({ ...book, [name]: value });
@@ -20,7 +21,8 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
             className="max-h-full max-w-full object-contain"
           />
         ) : (
-          <p>Add the Url for the book cover image</p>
+          //<p>Add the Url for the book cover image</p> - Patricia
+          <p style={{ paddingTop: '20px', paddingBottom: '20px', lineHeight: '28.9' }}>Book cover image</p> // Patricia
         )}
       </div>
 
@@ -37,6 +39,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
             name="title"
             value={book.title}
             onChange={handleChange}
+            disabled={disabled} // Patricia
             required
           />
         </div>
@@ -48,6 +51,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
             name="author"
             value={book.author}
             onChange={handleChange}
+            disabled={disabled} // Patricia
             required
           />
         </div>
@@ -58,6 +62,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
             name="description"
             value={book.description}
             onChange={handleChange}
+            disabled={disabled} // Patricia
             required
           />
         </div>
@@ -69,6 +74,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
             name="publicationDate"
             value={book.publicationDate}
             onChange={handleChange}
+            disabled={disabled} // Patricia
             required
           />
         </div>
@@ -80,13 +86,32 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing }) => {
             name="coverImage"
             value={book.coverImage}
             onChange={handleChange}
+            disabled={disabled} // Patricia
             required
           />
         </div>
 
-        <Button className="w-full mt-6">
+
+        {/* <Button className="w-full mt-6"> // comentado por Patricia
           {isEditing ? 'Update Book' : 'Add Book'}
-        </Button>
+        </Button> */}
+        {/*incluido por Patricia para criar o botao Edit e update*/}
+        {isEditing && ( 
+          <Button
+            type="button"
+            onClick={() => setDisabled(!disabled)}
+            className="w-full mt-6"
+          >
+            {disabled ? 'Editing' : 'Disable Editing'}
+          </Button>
+        )}
+        <Button
+          className="w-full mt-6"
+          disabled={disabled && isEditing}
+        >
+          {isEditing ? 'Update Book' : 'Add Book'}
+        </Button>  {/*fim  por Patricia*/}
+        
       </form>
     </div>
   );
