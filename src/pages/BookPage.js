@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
-//import BookForm from '@/components/Form/BookForm';
-import '../styles/BookPage.css'; // Patricia
+import '../styles/BookPage.css';
 
 const BookPage = () => {
   const { id } = useParams();
@@ -30,21 +29,8 @@ const BookPage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  //handle submit needs to be implemented
-  //const handleSubmit = async (e) => {};
-
   return (
-    // <MainLayout> comentado por Patricia para estilizar
-    //   <div>
-    //     <h1>{book.title}</h1>
-    //     <p>Author: {book.author}</p>
-    //     <p>Description: {book.description}</p>
-    //     <img src={book.coverImage} alt={book.title} />
-    //   </div>
-    // </MainLayout>
-
-    //Patricia - criadas classes para css BookPage.css
-    <MainLayout> 
+    <MainLayout>
       <div className="book-page-container">
         <h1>{book.title}</h1>
         <h2>Author: {book.author}</h2>

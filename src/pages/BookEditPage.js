@@ -27,33 +27,29 @@ const BookEditPage = () => {
     fetchBookDetails();
   }, [id]);
 
-    
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  //handle submit needs to be implemented
-  //const handleSubmit = async (e) => {}; Patricia
-  const handleSubmit = async (e) => { //Patricia (implementation of update)
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);  
+    setError(null);
     try {
       const token = localStorage.getItem('authToken');
       if (!token) {
         setError('Unauthorized: Please log in as an administrator.');
         return;
       }
-  
-      //calling of backend through axios.put ...
+
       const response = await axios.put(`/books/${id}`, book, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       if (response.status === 200) {
         alert('Book successfully updated!');
-        setDisabled(true); // Desabilita os campos após o envio
+        setDisabled(true);
       } else {
         setError('Failed to update the book. Please try again.');
       }
@@ -61,24 +57,17 @@ const BookEditPage = () => {
       setError(`Error while updating the book: ${err.message}`);
     }
   };
-  
 
-  return ( // comented by patricia
-    // <MainLayout>
-    //   <BookForm book={book} setBook={setBook} handleSubmit={handleSubmit} />;
-    //   book={book} 
-    //     setBook={setBook}
-    //     handleSubmit={handleSubmit}
-    // </MainLayout>
+  return (
     <MainLayout>
       <BookForm
         book={book}
         setBook={setBook}
         handleSubmit={handleSubmit}
         isEditing={true}
-        disabled={disabled} 
+        disabled={disabled}
         setDisabled={setDisabled}
-      /> 
+      />
     </MainLayout>
   );
 };

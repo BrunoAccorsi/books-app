@@ -3,15 +3,21 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-// const BookForm = ({ book, setBook, handleSubmit, isEditing }) => { comentado por Patricia
-const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisabled }) => { // Patricia
+const BookForm = ({
+  book,
+  setBook,
+  handleSubmit,
+  isEditing,
+  disabled,
+  setDisabled,
+}) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setBook({ ...book, [name]: value });
   };
 
   return (
-    <div className="flex justify-center mt-16 min-h-screen bg-gray-50 gap-8">
+    <div className="flex justify-center mt-16  bg-gray-50 gap-8">
       {/* Image Section */}
       <div className="flex flex-1 justify-center items-center border border-gray-300 h-full max-w-sm bg-gray-100">
         {book.coverImage ? (
@@ -21,8 +27,15 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             className="max-h-full max-w-full object-contain"
           />
         ) : (
-          //<p>Add the Url for the book cover image</p> - Patricia
-          <p style={{ paddingTop: '20px', paddingBottom: '20px', lineHeight: '28.9' }}>Book cover image</p> // Patricia
+          <p
+            style={{
+              paddingTop: '20px',
+              paddingBottom: '20px',
+              lineHeight: '28.9',
+            }}
+          >
+            Book cover image
+          </p>
         )}
       </div>
 
@@ -39,7 +52,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             name="title"
             value={book.title}
             onChange={handleChange}
-            disabled={disabled} // Patricia
+            disabled={disabled}
             required
           />
         </div>
@@ -51,7 +64,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             name="author"
             value={book.author}
             onChange={handleChange}
-            disabled={disabled} // Patricia
+            disabled={disabled}
             required
           />
         </div>
@@ -62,7 +75,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             name="description"
             value={book.description}
             onChange={handleChange}
-            disabled={disabled} // Patricia
+            disabled={disabled}
             required
           />
         </div>
@@ -74,7 +87,7 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             name="publicationDate"
             value={book.publicationDate}
             onChange={handleChange}
-            disabled={disabled} // Patricia
+            disabled={disabled}
             required
           />
         </div>
@@ -86,17 +99,11 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             name="coverImage"
             value={book.coverImage}
             onChange={handleChange}
-            disabled={disabled} // Patricia
+            disabled={disabled}
             required
           />
         </div>
-
-
-        {/* <Button className="w-full mt-6"> // comentado por Patricia
-          {isEditing ? 'Update Book' : 'Add Book'}
-        </Button> */}
-        {/*incluido por Patricia para criar o botao Edit e update*/}
-        {isEditing && ( 
+        {isEditing && (
           <Button
             type="button"
             onClick={() => setDisabled(!disabled)}
@@ -105,13 +112,9 @@ const BookForm = ({ book, setBook, handleSubmit, isEditing, disabled, setDisable
             {disabled ? 'Editing' : 'Disable Editing'}
           </Button>
         )}
-        <Button
-          className="w-full mt-6"
-          disabled={disabled && isEditing}
-        >
+        <Button className="w-full mt-6" disabled={disabled && isEditing}>
           {isEditing ? 'Update Book' : 'Add Book'}
-        </Button>  {/*fim  por Patricia*/}
-        
+        </Button>
       </form>
     </div>
   );

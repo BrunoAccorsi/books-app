@@ -55,9 +55,7 @@ const LoginPage = () => {
     }
   };
 
-
-  const handleKeyDown = (e) => { // Patricia testes
-    // Verifica se o "Enter" foi pressionado e envia o formulário
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSubmit(e);
     }
@@ -73,8 +71,7 @@ const LoginPage = () => {
               {error && <p className="text-red-600">{error}</p>}
             </CardHeader>
             <CardContent>
-              {/* <form>  - commented by Patricia */}
-              <form onSubmit={handleSubmit}> {/*line included by Patricia*/}
+              <form onSubmit={handleSubmit}>
                 <div className="grid w-full items-center gap-4">
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="name">User name</Label>
@@ -90,7 +87,7 @@ const LoginPage = () => {
                       type="password"
                       id="password"
                       onChange={(e) => setPassword(e.target.value)}
-                      onKeyDown={handleKeyDown} // Disparar o envio do formulário com Enter
+                      onKeyDown={handleKeyDown}
                     />
                   </div>
                 </div>
