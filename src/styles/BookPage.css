@@ -1,0 +1,49 @@
+/* src/styles/BookPage.css */
+/* Patricia */
+.book-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9fafb;
+  overflow:hidden;
+  max-height: 100vh;
+  
+}
+
+.book-page-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.book-page-container h2 {
+  font-size: 1rem;
+  color: #666; 
+}
+
+.book-page-container img {
+  max-width: 290px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: contain; 
+}
+
+.book-page-container .description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.book-page-container .additional-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px;
+  width: 100%;
+}
