@@ -9,8 +9,8 @@ const BookEditPage = () => {
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(true); // Patricia - state to control button "edit"
-  const navigate = useNavigate(); // For redirecting after deletion
+  const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -56,12 +56,8 @@ const BookEditPage = () => {
     }
   };
 
-  // Delete function
   const handleDelete = async () => {
-    if (!window.confirm('Are you sure you want to delete this book?')) return;
-
-    setError(null); // Reset any previous errors
-
+    setError(null);
     try {
       const token = localStorage.getItem('authToken');
       if (!token) {
@@ -98,7 +94,7 @@ const BookEditPage = () => {
         isEditing={true}
         disabled={disabled}
         setDisabled={setDisabled}
-        onDelete={handleDelete} // Pass handleDelete function to BookForm
+        onDelete={handleDelete}
       />
     </MainLayout>
   );

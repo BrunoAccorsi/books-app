@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BookForm from '@/components/Form/BookForm';
 
-
 const BookNewPage = () => {
   const { id } = useParams();
   const [book, setBook] = useState({
