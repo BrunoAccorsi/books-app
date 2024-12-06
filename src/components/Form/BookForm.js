@@ -2,6 +2,17 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '../ui/alert-dialog';
 
 const BookForm = ({
   book,
@@ -10,6 +21,7 @@ const BookForm = ({
   isEditing,
   disabled,
   setDisabled,
+  onDelete,
 }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,7 +54,7 @@ const BookForm = ({
       {/* Form Section */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-2 flex-col gap-6 w-full max-w-lg"
+        className="flex flex-2 flex-col gap-6 w-full max-w-lg my-4"
       >
         <div>
           <Label htmlFor="title">Title:</Label>
@@ -107,14 +119,41 @@ const BookForm = ({
           <Button
             type="button"
             onClick={() => setDisabled(!disabled)}
-            className="w-full mt-6"
+            className="w-full"
           >
             {disabled ? 'Enable Editing' : 'Disable Editing'}
           </Button>
         )}
-        <Button className="w-full mt-6" disabled={disabled && isEditing}>
+        <Button
+          className="w-full disabled:bg-gray-200 disabled:text-gray-500"
+          disabled={disabled && isEditing}
+        >
           {isEditing ? 'Update Book' : 'Add Book'}
         </Button>
+
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              variant="outline"
+              className="bg-red-800 text-white hover:bg-red-700 hover:text-white w-full"
+            >
+              Delete Book
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete the
+                book and remove its data from our servers.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={onDelete}>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </form>
     </div>
   );
