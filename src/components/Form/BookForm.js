@@ -10,6 +10,7 @@ const BookForm = ({
   isEditing,
   disabled,
   setDisabled,
+  onDelete,  // Destructure onDelete from props
 }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -115,6 +116,16 @@ const BookForm = ({
         <Button className="w-full mt-6" disabled={disabled && isEditing}>
           {isEditing ? 'Update Book' : 'Add Book'}
         </Button>
+
+        {/* Delete button */}
+        <Button
+          type="button"
+          onClick={onDelete} // Call onDelete function passed as prop
+          style={{ marginTop: '20px', backgroundColor: 'red', color: 'white' }}
+        >
+          Delete Book
+        </Button>
+        
       </form>
     </div>
   );

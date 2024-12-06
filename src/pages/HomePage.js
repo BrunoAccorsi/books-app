@@ -6,6 +6,8 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/Context/AuthContext';
 
+
+
 const HomePage = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(AuthContext);

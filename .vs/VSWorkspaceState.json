@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\layout",
+    "\\src\\components\\layout\\Footer",
+    "\\src\\components\\layout\\Header",
+    "\\src\\components\\ui",
+    "\\src\\Context",
+    "\\src\\lib",
+    "\\src\\pages"
+  ],
+  "SelectedNode": "\\src\\components\\ui\\button.jsx",
+  "PreviewInSolutionExplorer": false
+}
