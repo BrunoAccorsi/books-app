@@ -133,12 +133,14 @@ const BookForm = ({
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button
-              variant="outline"
-              className="bg-red-800 text-white hover:bg-red-700 hover:text-white w-full"
-            >
-              Delete Book
-            </Button>
+            {book.id && (
+              <Button
+                variant="outline"
+                className="bg-red-800 text-white hover:bg-red-700 hover:text-white w-full"
+              >
+                Delete Book
+              </Button>
+            )}
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
